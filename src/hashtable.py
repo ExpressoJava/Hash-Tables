@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
     # Test removing
     ht.remove("line_3")
-    ht.remove("wafflesdfdfdfdfdffdghtrghrrgrgrgf")  # what is this testing?
+    ht.remove("line_3")  # what is this testing?
 
     print("")
 
