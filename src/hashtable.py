@@ -99,12 +99,18 @@ class HashTable:
 
         Fill this in.
         '''
-        # # double the size of capacity
-        # # self.capacity += 2 #another way doubling capacity
-        # self.storage = self.capacity * 2
-        # # Create new storage for new size
-        # new_storage = [None] * self.capacity
-        pass
+        # double the size of capacity
+        self.capacity += 2  # another way doubling capacity
+
+        # Create new storage for new size
+        new_storage = [None] * self.capacity
+
+        for pair in self.storage:
+            if pair is not None:
+                new_index = self._hash_mod(pair.key)
+                new_storage[new_index] = pair
+
+        self.storage = new_storage
 
 
 if __name__ == "__main__":
@@ -125,8 +131,8 @@ if __name__ == "__main__":
     # ht.remove("line_3")
     # # what is this testing? we're testing to see if line_3 has been removed. will get key not found warning
     # ht.remove("line_3")
-    ht.remove("line_1")
-    ht.remove("line_1")
+    # ht.remove("line_1")
+    # ht.remove("line_1")
 
     print("")
 
