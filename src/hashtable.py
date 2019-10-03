@@ -68,7 +68,13 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+        # Print a warning if key is not found
+        if self.storage[index] is None:
+            print("warning: Key not found!")
+            return
+
+        self.storage[index] = None
 
     def retrieve(self, key):
         '''
@@ -105,6 +111,12 @@ if __name__ == "__main__":
     print(ht.retrieve("line_1"))
     print(ht.retrieve("line_2"))
     print(ht.retrieve("line_3"))
+
+    # Test removing
+    ht.remove("line_3")
+    ht.remove("wafflesdfdfdfdfdffdghtrghrrgrgrgf")  # what is this testing?
+
+    print("")
 
     # Test resizing
     old_capacity = len(ht.storage)
