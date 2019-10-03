@@ -58,7 +58,7 @@ class HashTable:
             return
 
         # insert value in storage
-        self.storage[index] = value
+        self.storage[index] = LinkedPair(key, value)
 
     def remove(self, key):
         '''
@@ -85,8 +85,12 @@ class HashTable:
         Fill this in.
         '''
         index = self._hash_mod(key)
+        pair = self.storage[index]
 
-        return self.storage[index]
+        if pair is None:
+            return None
+        else:
+            return self.storage[index].value
 
     def resize(self):
         '''
@@ -95,6 +99,11 @@ class HashTable:
 
         Fill this in.
         '''
+        # # double the size of capacity
+        # # self.capacity += 2 #another way doubling capacity
+        # self.storage = self.capacity * 2
+        # # Create new storage for new size
+        # new_storage = [None] * self.capacity
         pass
 
 
@@ -113,8 +122,11 @@ if __name__ == "__main__":
     print(ht.retrieve("line_3"))
 
     # Test removing
-    ht.remove("line_3")
-    ht.remove("line_3")  # what is this testing?
+    # ht.remove("line_3")
+    # # what is this testing? we're testing to see if line_3 has been removed. will get key not found warning
+    # ht.remove("line_3")
+    ht.remove("line_1")
+    ht.remove("line_1")
 
     print("")
 
